@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Para realizar requisições HTTP
 import { HttpClientModule } from '@angular/common/http';
 
+import { ToastrModule } from 'ngx-toastr';
+
 // Imports para componentes do Angular Material
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -68,7 +70,12 @@ import { LoginComponent } from './components/login/login.component';
     MatInputModule,
     MatIconModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      closeButton: true,
+      progressBar: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
