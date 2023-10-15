@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+$primary-color: #183942;
+$accent-color: #96C3C8;
+
+@import '~@angular/material/theming';
+
+// Definindo a paleta de cores primária
+$primary: mat-palette($mat-indigo);
+$primary: mat-palette($mat-indigo, 700, 400, 900); // Use a cor personalizada #183942 para a cor primária
+
+// Definindo a paleta de cores secundária
+$accent: mat-palette($mat-light-blue);
+$accent: mat-palette($mat-light-blue, A200, A100, A400); // Use a cor personalizada #96C3C8 para a cor secundária
+
+// Criando o tema com as paletas personalizadas
+$theme: mat-light-theme($primary, $accent);
+
+// Aplicando o tema
+@include angular-material-theme($theme);
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: "Roboto", "Helvetica Neue", sans-serif; }

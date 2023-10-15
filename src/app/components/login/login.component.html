@@ -1,9 +1,8 @@
 <div class="container">
     <form class="form mat-elevation-z8">
+        <h1>Login</h1>
 
-        <h1>Help Laudo - By Jonh Ré</h1>
-
-        <img src="assets/img/side-image.svg" alt="Help Laudo - By Jonh Ré">
+        <img src="assets/img/logo_login2.svg" alt="Help Laudo - By Jonh Ré">
 
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Email</mat-label>
@@ -17,6 +16,8 @@
             <mat-icon matSuffix>password</mat-icon>
           </mat-form-field>
       
-        <button [disabled]="!validaCampos()" (click)="logar()" class="full-width mat-elevation-z2" mat-stroked-button color="primary">Login</button>
+        <button [disabled]="!validaCampos()" (click)="logar()" class="full-width" mat-raised-button color="primary">LOGAR</button>
+
+        <p class="assign">Desenvolvido por João Ré</p>
       </form>    
 </div>
