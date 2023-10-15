@@ -1,12 +1,12 @@
 <div class="container">
 
-    <h1>Listando Chamados</h1>
+    <h1>Chamados de laudos</h1>
   
-    <button routerLink="create" mat-stroked-button color="primary">Novo Chamado</button>
+    <button routerLink="create" mat-raised-button color="primary">Novo Chamado</button>
   
       <mat-form-field appearance="standard">
         <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Maria Bonita" #input>
       </mat-form-field>
 
       <mat-radio-group color="primary">
@@ -23,18 +23,33 @@
               <td mat-cell *matCellDef="let element"> {{element.id}} </td>
             </ng-container>
         
-            <ng-container matColumnDef="titulo">
-              <th mat-header-cell *matHeaderCellDef> Titulo </th>
-              <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+            <ng-container matColumnDef="nomePaciente">
+              <th mat-header-cell *matHeaderCellDef> Paciente </th>
+              <td mat-cell *matCellDef="let element"> {{element.nomePaciente}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="especie">
+              <th mat-header-cell *matHeaderCellDef> Espécie </th>
+              <td mat-cell *matCellDef="let element"> {{element.especie}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="raca">
+              <th mat-header-cell *matHeaderCellDef> Raça </th>
+              <td mat-cell *matCellDef="let element"> {{element.raca}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sexo">
+              <th mat-header-cell *matHeaderCellDef> Sexo </th>
+              <td mat-cell *matCellDef="let element"> {{element.sexo}} </td>
             </ng-container>
         
-            <ng-container matColumnDef="cliente">
+            <ng-container matColumnDef="clinica">
               <th mat-header-cell *matHeaderCellDef> Cliente </th>
-              <td mat-cell *matCellDef="let element"> {{element.nomeCliente}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.nomeClinica}} </td>
             </ng-container>
 
             <ng-container matColumnDef="tecnico">
-                <th mat-header-cell *matHeaderCellDef> Tecnico </th>
+                <th mat-header-cell *matHeaderCellDef> Especialista </th>
                 <td mat-cell *matCellDef="let element"> {{element.nomeTecnico}} </td>
             </ng-container>
         

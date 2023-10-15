@@ -14,7 +14,7 @@ export class ChamadoListComponent implements OnInit {
   ELEMENT_DATA: Chamado[] = [];
   FILTERED_DATA: Chamado[] = [];
   
-  displayedColumns: string[] = ['id', 'titulo', 'cliente','tecnico', 'dataAbertura', 'prioridade', 'status', 'acoes'];
+  displayedColumns: string[] = ['id', 'nomePaciente','especie','raca','sexo', 'clinica','tecnico', 'dataAbertura', 'prioridade', 'status', 'acoes'];
   dataSource = new MatTableDataSource<Chamado>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
