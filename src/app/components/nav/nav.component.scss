@@ -1,19 +1,20 @@
 .container{
     height: 100%;
-    background-color: #183942;
+    
 }
 
 .sidenav{
     width: 13rem;
-    color: #fff;
-    background: linear-gradient(180deg, rgba(62,117,189,1) 5%, rgba(53,176,217,1) 39%, rgba(0,212,255,1) 75%);
+    color: #F4FEFF;
+    background-color: #183942;
 
     a{
-        color:#fff;
+        color:#F4FEFF;
     }
     
     i{
         margin-right: .6rem;
+        color: #96C3C8;
     }
 }
 
@@ -25,6 +26,13 @@ img{
 
 .menu{
     margin: 1rem 0 0 1rem;
-    color: #fff;
-    background: linear-gradient(180deg, rgba(62,117,189,1) 5%, rgba(53,176,217,1) 39%, rgba(0,212,255,1) 75%);
+    color: #F4FEFF;
+    background-color: #183942;
+}
+
+
+.menu-header{
+    background-color: #183942;
+    color: #F4FEFF;
+    margin-bottom: 2rem;
 }
