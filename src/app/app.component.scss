@@ -1,3 +1,17 @@
 body{
     background-color: #183942;
 }
+
+
+.d-flex{
+    display: flex;
+
+    &.justify-content-right{
+        justify-content: right;
+    }
+}
+
+
+.w-100{
+    width: 100%;
+}
