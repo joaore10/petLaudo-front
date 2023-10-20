@@ -49,6 +49,10 @@ import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-
 import { ChamadoCreateComponent } from './components/chamado/chamado-create/chamado-create.component';
 import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
+import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-list.component';
+import { ClinicaCreateComponent } from './components/clinica/clinica-create/clinica-create.component';
+import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
+import { ClinicaDeleteComponent } from './components/clinica/clinica-delete/clinica-delete.component';
 
 
 
@@ -70,7 +74,11 @@ import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-
     ChamadoListComponent,
     ChamadoCreateComponent,
     ChamadoUpdateComponent,
-    ChamadoReadComponent
+    ChamadoReadComponent,
+    ClinicaListComponent,
+    ClinicaCreateComponent,
+    ClinicaUpdateComponent,
+    ClinicaDeleteComponent
   ],
   imports: [
     BrowserModule,

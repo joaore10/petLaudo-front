@@ -16,6 +16,10 @@ import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-
 import { ChamadoCreateComponent } from './components/chamado/chamado-create/chamado-create.component';
 import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
+import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-list.component';
+import { ClinicaCreateComponent } from './components/clinica/clinica-create/clinica-create.component';
+import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
+import { ClinicaDeleteComponent } from './components/clinica/clinica-delete/clinica-delete.component';
 
 const routes: Routes = [
   {
@@ -34,6 +38,11 @@ const routes: Routes = [
       { path: 'clientes/create', component: ClienteCreateComponent},
       { path: 'clientes/update/:id', component: ClienteUpdateComponent},
       { path: 'clientes/delete/:id', component: ClienteDeleteComponent},
+
+      { path: 'clinicas', component: ClinicaListComponent},
+      { path: 'clinicas/create', component: ClinicaCreateComponent},
+      { path: 'clinicas/update/:id', component: ClinicaUpdateComponent},
+      { path: 'clinicas/delete/:id', component: ClinicaDeleteComponent},
 
       { path: 'chamados', component: ChamadoListComponent},
       { path: 'chamados/create', component: ChamadoCreateComponent},
