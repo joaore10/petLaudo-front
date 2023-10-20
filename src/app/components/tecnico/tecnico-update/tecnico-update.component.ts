@@ -15,7 +15,6 @@ export class TecnicoUpdateComponent implements OnInit {
   tecnico: Tecnico = {
     id:'',
     nome:'',
-    cpf: '',
     email: '',
     senha: '',
     perfis:[],
@@ -23,7 +22,6 @@ export class TecnicoUpdateComponent implements OnInit {
   }
 
   nome: FormControl = new FormControl(null, Validators.minLength(3));
-  cpf: FormControl = new FormControl(null, Validators.required);
   email: FormControl = new FormControl(null, Validators.email);
   senha: FormControl = new FormControl(null, Validators.minLength(3));
 
@@ -67,6 +65,6 @@ export class TecnicoUpdateComponent implements OnInit {
   }
 
   validaCampos(){
-    return this.nome.valid && this.cpf.valid && this.email.valid && this.senha.valid;
+    return this.nome.valid && this.email.valid && this.senha.valid;
   }
 }
