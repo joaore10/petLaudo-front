@@ -15,7 +15,6 @@ export class LaudoService {
     return this.http.get<Laudo>(`${API_CONFIG.baseUrl}/laudos/${id}`);
   }
 
-
   findAll(): Observable<Laudo[]> {
     return this.http.get<Laudo[]>(`${API_CONFIG.baseUrl}/laudos`);
   }

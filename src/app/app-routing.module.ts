@@ -20,6 +20,7 @@ import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-
 import { ClinicaCreateComponent } from './components/clinica/clinica-create/clinica-create.component';
 import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
 import { ClinicaDeleteComponent } from './components/clinica/clinica-delete/clinica-delete.component';
+import { LaudoListComponent } from './components/laudo/laudo-list/laudo-list.component';
 
 const routes: Routes = [
   {
@@ -49,7 +50,10 @@ const routes: Routes = [
       { path: 'chamados/update/:id', component: ChamadoUpdateComponent},
       { path: 'chamados/read/:id', component: ChamadoReadComponent},
 
-      
+      { path: 'laudos', component: LaudoListComponent},
+      { path: 'chamados/create', component: ChamadoCreateComponent},
+      { path: 'chamados/update/:id', component: ChamadoUpdateComponent},
+      { path: 'chamados/read/:id', component: ChamadoReadComponent},
     ]
   }
 ];

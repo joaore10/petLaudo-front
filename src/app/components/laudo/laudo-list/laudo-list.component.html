@@ -1,0 +1,71 @@
+<div class="container">
+
+    <h1>Laudos Realizados</h1>
+
+      <mat-grid-list cols="12" gutterSize="30px" rowHeight="100px">
+
+        <mat-grid-tile [colspan]="6" [rowspan]="1">
+          <mat-form-field appearance="standard">
+            <mat-label>Filtro</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Clinica da esquina" #input>
+          </mat-form-field>
+        </mat-grid-tile>
+    
+        <mat-grid-tile [colspan]="6" [rowspan]="1">
+          <div class="d-flex justify-content-right w-100">
+            <button mat-raised-button color="primary" routerLink="create">Novo Laudo</button>
+          </div>
+        </mat-grid-tile>
+    
+      </mat-grid-list>
+  
+      <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+        
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="projecoes">
+              <th mat-header-cell *matHeaderCellDef> Projeções </th>
+              <td mat-cell *matCellDef="let element"> {{element.projecoes}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="achadosRadiograficos">
+              <th mat-header-cell *matHeaderCellDef> Achados Radiograficos </th>
+              <td mat-cell *matCellDef="let element"> {{element.achadosRadiograficos}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="impressoesDiagnosticas">
+              <th mat-header-cell *matHeaderCellDef> Impressões Diagnósticas </th>
+              <td mat-cell *matCellDef="let element"> {{element.impressoesDiagnosticas}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dataCriacao">
+              <th mat-header-cell *matHeaderCellDef> Data Criação </th>
+              <td mat-cell *matCellDef="let element"> {{element.dataCriacao}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="acoes">
+              <th mat-header-cell *matHeaderCellDef> Ações </th>
+              <td mat-cell *matCellDef="let element"> 
+                <a routerLink="update/{{element.id}}">
+                  <i class="material-icons edit">edit</i>
+                </a>  
+                <a routerLink="read/{{ element.id }}">
+                  <i class="material-icons delete">visibility</i>
+                </a> 
+              </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                         showFirstLastButtons 
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>    
+  </div>
