@@ -7,9 +7,21 @@
 
     
         <mat-form-field appearance="legacy" class="fullWidth">
-            <mat-label>Nome</mat-label>
+            <mat-label>Nome do Responsável</mat-label>
             <input [(ngModel)]="clinica.nome" name="nome" [formControl]="nome" required matInput placeholder="Ex. Fulano de Tal" maxlength="50">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="fullWidth">
+            <mat-label>Nome da Clinica</mat-label>
+            <input [(ngModel)]="clinica.nomeClinica" name="nomeClinica" [formControl]="nomeClinica" required matInput placeholder="Ex. Fulano de Tal" maxlength="50">
+            <mat-icon matSuffix>domain</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="fullWidth">
+            <mat-label>Endereço</mat-label>
+            <input [(ngModel)]="clinica.endereco" name="endereco" [formControl]="endereco" required matInput placeholder="Ex. Rua Vinte e quatro de Maio" maxlength="90">
+            <mat-icon matSuffix>markunread_mailbox</mat-icon>
         </mat-form-field>
 
         <mat-form-field appearance="legacy" class="fullWidth">

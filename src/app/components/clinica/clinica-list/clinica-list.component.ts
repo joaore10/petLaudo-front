@@ -7,13 +7,13 @@ import { ClinicaService } from 'src/app/services/clinica.service';
 @Component({
   selector: 'app-clinica-list',
   templateUrl: './clinica-list.component.html',
-  styleUrls: ['./clinica-list.component.scss']
+  styleUrls: ['./clinica-list.component.scss','../../../app.component.scss']
 })
 export class ClinicaListComponent implements OnInit {
 
   ELEMENT_DATA: Clinica[] = []
   
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acoes'];
+  displayedColumns: string[] = ['id', 'nome','nomeClinica', 'cnpj', 'email', 'acoes'];
   dataSource = new MatTableDataSource<Clinica>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

@@ -25,6 +25,8 @@ export class ClinicaCreateComponent implements OnInit {
   }
 
   nome: FormControl = new FormControl(null, Validators.minLength(3));
+  nomeClinica: FormControl = new FormControl(null, Validators.minLength(3));
+  endereco: FormControl = new FormControl(null, Validators.minLength(3));
   cnpj: FormControl = new FormControl(null, Validators.required);
   email: FormControl = new FormControl(null, Validators.email);
   senha: FormControl = new FormControl(null, Validators.minLength(3));
@@ -60,6 +62,6 @@ export class ClinicaCreateComponent implements OnInit {
   }
 
   validaCampos(){
-    return this.nome.valid && this.cnpj.valid && this.email.valid && this.senha.valid;
+    return this.nome.valid && this.nomeClinica.valid && this.endereco.valid && this.cnpj.valid && this.email.valid && this.senha.valid;
   }
 }

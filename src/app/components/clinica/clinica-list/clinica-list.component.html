@@ -1,33 +1,48 @@
 <div class="container">
 
     <h1>Listando Clinicas</h1>
+
+    <mat-grid-list cols="12" gutterSize="30px" rowHeight="100px">
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Filtro</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Clinica da esquina" #input>
+        </mat-form-field>
+      </mat-grid-tile>
   
-    <button mat-stroked-button color="primary" routerLink="create">Nova Clinica</button>
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <div class="d-flex justify-content-right w-100">
+          <button mat-raised-button color="primary" routerLink="create">Novo Clinica</button>
+        </div>
+      </mat-grid-tile>
   
-      <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-      </mat-form-field>
+    </mat-grid-list>
   
       <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource">
         
-            <ng-container matColumnDef="position">
+            <ng-container matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef> Id </th>
               <td mat-cell *matCellDef="let element"> {{element.id}} </td>
             </ng-container>
         
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <ng-container matColumnDef="nome">
+              <th mat-header-cell *matHeaderCellDef> Responsável </th>
               <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
             </ng-container>
+
+            <ng-container matColumnDef="nomeClinica">
+              <th mat-header-cell *matHeaderCellDef> Nome Clinica</th>
+              <td mat-cell *matCellDef="let element"> {{element.nomeClinica}} </td>
+            </ng-container>
         
-            <ng-container matColumnDef="weight">
+            <ng-container matColumnDef="cnpj">
               <th mat-header-cell *matHeaderCellDef> CNPJ </th>
               <td mat-cell *matCellDef="let element"> {{element.cnpj}} </td>
             </ng-container>
         
-            <ng-container matColumnDef="symbol">
+            <ng-container matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef> E-mail </th>
               <td mat-cell *matCellDef="let element"> {{element.email}} </td>
             </ng-container>
