@@ -54,6 +54,9 @@ import { ClinicaCreateComponent } from './components/clinica/clinica-create/clin
 import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
 import { ClinicaDeleteComponent } from './components/clinica/clinica-delete/clinica-delete.component';
 import { LaudoListComponent } from './components/laudo/laudo-list/laudo-list.component';
+import { LaudoCreateComponent } from './components/laudo/laudo-create/laudo-create.component';
+import { LaudoDeleteComponent } from './components/laudo/laudo-delete/laudo-delete.component';
+import { LaudoUpdateComponent } from './components/laudo/laudo-update/laudo-update.component';
 
 
 
@@ -80,7 +83,10 @@ import { LaudoListComponent } from './components/laudo/laudo-list/laudo-list.com
     ClinicaCreateComponent,
     ClinicaUpdateComponent,
     ClinicaDeleteComponent,
-    LaudoListComponent
+    LaudoListComponent,
+    LaudoCreateComponent,
+    LaudoDeleteComponent,
+    LaudoUpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,8 @@ import { ClinicaCreateComponent } from './components/clinica/clinica-create/clin
 import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
 import { ClinicaDeleteComponent } from './components/clinica/clinica-delete/clinica-delete.component';
 import { LaudoListComponent } from './components/laudo/laudo-list/laudo-list.component';
+import { LaudoCreateComponent } from './components/laudo/laudo-create/laudo-create.component';
+import { LaudoUpdateComponent } from './components/laudo/laudo-update/laudo-update.component';
 
 const routes: Routes = [
   {
@@ -51,9 +53,9 @@ const routes: Routes = [
       { path: 'chamados/read/:id', component: ChamadoReadComponent},
 
       { path: 'laudos', component: LaudoListComponent},
-      { path: 'chamados/create', component: ChamadoCreateComponent},
-      { path: 'chamados/update/:id', component: ChamadoUpdateComponent},
-      { path: 'chamados/read/:id', component: ChamadoReadComponent},
+      { path: 'laudos/create', component: LaudoCreateComponent},
+      { path: 'laudos/update/:id', component: LaudoUpdateComponent},
+      //{ path: 'laudos/read/:id', component: LaudoReadComponent},
     ]
   }
 ];
