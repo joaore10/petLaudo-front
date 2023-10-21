@@ -13,14 +13,32 @@ import { ChamadoService } from 'src/app/services/chamado.service';
 export class ChamadoReadComponent implements OnInit {
 
   chamado: Chamado = {
+    id: '',
+    dataAbertura: '',
+    dataFechamento: '',
     prioridade: '',
     status: '',
     titulo: '',
     observacoes: '',
     tecnico: '',
     cliente: '',
+    clinica: '',
     nomeCliente: '',
-    nomeTecnico: ''
+    nomeTecnico: '',
+    nomeClinica: '',
+    dataNascimento: '',
+    dataEstudo: '',
+    idade: '',
+    sexo: '',
+    raca: '',
+    especie: '',
+    responsavelPaciente: '',
+    medicoRequerente: '',
+    nomePaciente: '',
+    crmv: '',
+    regiaoExame: '',
+    imagens: [],
+    laudo: ''
   }
 
   constructor(  private chamadoService: ChamadoService, private toastService: ToastrService,

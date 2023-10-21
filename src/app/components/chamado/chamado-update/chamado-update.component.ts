@@ -17,14 +17,32 @@ import { TecnicoService } from 'src/app/services/tecnico.service';
 export class ChamadoUpdateComponent implements OnInit {
 
   chamado: Chamado = {
+    id: '',
+    dataAbertura: '',
+    dataFechamento: '',
     prioridade: '',
     status: '',
     titulo: '',
     observacoes: '',
     tecnico: '',
     cliente: '',
+    clinica: '',
     nomeCliente: '',
-    nomeTecnico: ''
+    nomeTecnico: '',
+    nomeClinica: '',
+    dataNascimento: '',
+    dataEstudo: '',
+    idade: '',
+    sexo: '',
+    raca: '',
+    especie: '',
+    responsavelPaciente: '',
+    medicoRequerente: '',
+    nomePaciente: '',
+    crmv: '',
+    regiaoExame: '',
+    imagens: [],
+    laudo: ''
   }
 
   clientes: Cliente[] = [];

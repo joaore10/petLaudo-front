@@ -24,6 +24,7 @@ export class LaudoCreateComponent implements OnInit {
   }
 
   chamados: Chamado[] = [];
+  chamado: any = {};
 
   projecoes: FormControl = new FormControl(null, [Validators.required]);
   achadosRadiograficos: FormControl = new FormControl(null, [Validators.required]);
@@ -52,6 +53,11 @@ export class LaudoCreateComponent implements OnInit {
     })
   }
 
+  selectChamado(chamado: number): void{
+    this.chamadoService.findById(chamado).subscribe(res => {
+      this.chamado = res;
+    })
+  }
 
   validaCampos(): boolean {
     return this.projecoes.valid && this.achadosRadiograficos.valid && this.impressoesDiagnosticas.valid &&
