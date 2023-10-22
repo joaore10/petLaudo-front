@@ -9,6 +9,10 @@
     border: 3px solid red;
 }
 
+.mat-input-element:disabled{
+    color: black;
+}
+
 .full-width{
     width: 100%;
 }
@@ -17,9 +21,6 @@ h1,img, p {
     text-align: center;
 }
 
-img{
-    height: 15rem;
-}
 
 .status-prioridade{
     display: flex;
@@ -44,4 +45,9 @@ button{
 p{
     margin-top: 3rem;
     opacity: .5;
+}
+
+.container-dialog{
+    width: 100% !important;
+    max-height: 93vh !important;
 }

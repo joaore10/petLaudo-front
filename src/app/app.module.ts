@@ -30,6 +30,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDialogModule} from '@angular/material/dialog';
 
 // Componentes do projeto
 import { NavComponent } from './components/nav/nav.component';
@@ -57,6 +58,7 @@ import { LaudoListComponent } from './components/laudo/laudo-list/laudo-list.com
 import { LaudoCreateComponent } from './components/laudo/laudo-create/laudo-create.component';
 import { LaudoDeleteComponent } from './components/laudo/laudo-delete/laudo-delete.component';
 import { LaudoUpdateComponent } from './components/laudo/laudo-update/laudo-update.component';
+
 
 
 
@@ -113,6 +115,7 @@ import { LaudoUpdateComponent } from './components/laudo/laudo-update/laudo-upda
     MatListModule,
     MatCardModule,
     MatGridListModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog , MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Chamado } from 'src/app/models/chamado';
@@ -32,7 +33,7 @@ export class LaudoCreateComponent implements OnInit {
   chamadoId: FormControl = new FormControl(null, [Validators.required]);
 
   constructor( private chamadoService: ChamadoService, private laudoService: LaudoService, private toastService: ToastrService,
-    private router: Router) { }
+    private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.findAllChamados();
@@ -64,5 +65,27 @@ export class LaudoCreateComponent implements OnInit {
             this.chamadoId.valid;
   }
 
+  ampliarImagem(imgSrc: any) {
+    const dialogRef = this.dialog.open(DialogContentDialog, {
+      data: {
+        src: imgSrc
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+}
+
+
+@Component({
+  selector: 'dialog-content',
+  templateUrl: 'dialog-imagem.html',
+  styleUrls: ['./laudo-create.component.scss']
+})
+export class DialogContentDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 }
 
