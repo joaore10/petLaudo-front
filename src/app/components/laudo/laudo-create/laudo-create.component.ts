@@ -40,6 +40,7 @@ export class LaudoCreateComponent implements OnInit {
   }
 
   create(): void{
+    console.log(this.laudo);
     this.laudoService.create(this.laudo).subscribe(res =>{
       this.toastService.success('Criado laudo com sucesso', 'Novo Laudo');
       this.router.navigate(['laudos']);

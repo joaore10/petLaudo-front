@@ -138,7 +138,7 @@
                     </div>
                     <div class="col-sm-3" *ngFor="let img of chamado.imagens">
                         <mat-card class="card">
-                            <img mat-card-image src="{{img}}" class="img-thumbnail" alt="Photo of a Shiba Inu">
+                            <img mat-card-image src="{{img}}" alt="Foto do laudo">
                             <mat-card-actions>
                               <button mat-button (click)="ampliarImagem(img)">Ampliar</button>
                             </mat-card-actions>
@@ -147,6 +147,57 @@
 
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="full-width">
+                Preencher Laudo
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-laudo">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form class="form">
+                            <mat-form-field class="full-width descricao" appearance="outline">
+                                <mat-label>Projeções</mat-label>
+                                <textarea [(ngModel)]="laudo.projecoes" name="projecoes" [formControl]="projecoes" required matInput placeholder="Ex. trovar bateria de notebook queimada..."></textarea>
+                            </mat-form-field>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <form class="form">
+                            <mat-form-field class="full-width descricao" appearance="outline">
+                                <mat-label>Achados Radiográficos</mat-label>
+                                <textarea [(ngModel)]="laudo.achadosRadiograficos" name="achadosRadiograficos" [formControl]="achadosRadiograficos" required matInput placeholder="Ex. trovar bateria de notebook queimada..."></textarea>
+                            </mat-form-field>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form class="form">
+                            <mat-form-field class="full-width descricao" appearance="outline">
+                                <mat-label>Impressões Diagnósticasa</mat-label>
+                                <textarea [(ngModel)]="laudo.impressoesDiagnosticas" name="impressoesDiagnosticas" [formControl]="impressoesDiagnosticas" required matInput placeholder="Ex. trovar bateria de notebook queimada..."></textarea>
+                            </mat-form-field>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 text-right">
+                        <button class="mr-3" (click)="create()" [disabled]="!validaCampos()" mat-raised-button color="primary">Criar laudo</button>
+                        <button routerLink="../" mat-raised-button color="warn">Voltar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
