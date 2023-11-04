@@ -18,12 +18,9 @@ export class ChamadoReadComponent implements OnInit {
     dataFechamento: '',
     prioridade: '',
     status: '',
-    titulo: '',
     observacoes: '',
     tecnico: '',
-    cliente: '',
     clinica: '',
-    nomeCliente: '',
     nomeTecnico: '',
     nomeClinica: '',
     dataNascimento: '',
@@ -37,7 +34,6 @@ export class ChamadoReadComponent implements OnInit {
     nomePaciente: '',
     crmv: '',
     regiaoExame: '',
-    imagens: [],
     laudo: ''
   }
 

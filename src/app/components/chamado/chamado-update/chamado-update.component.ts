@@ -22,12 +22,9 @@ export class ChamadoUpdateComponent implements OnInit {
     dataFechamento: '',
     prioridade: '',
     status: '',
-    titulo: '',
     observacoes: '',
     tecnico: '',
-    cliente: '',
     clinica: '',
-    nomeCliente: '',
     nomeTecnico: '',
     nomeClinica: '',
     dataNascimento: '',
@@ -41,11 +38,9 @@ export class ChamadoUpdateComponent implements OnInit {
     nomePaciente: '',
     crmv: '',
     regiaoExame: '',
-    imagens: [],
     laudo: ''
   }
 
-  clientes: Cliente[] = [];
   tecnicos: Tecnico[] = [];
 
   prioridade: FormControl = new FormControl(null, [Validators.required]);
@@ -53,7 +48,7 @@ export class ChamadoUpdateComponent implements OnInit {
   titulo: FormControl = new FormControl(null, [Validators.required]);
   observacoes: FormControl = new FormControl(null, [Validators.required]);
   tecnico: FormControl = new FormControl(null, [Validators.required]);
-  cliente: FormControl = new FormControl(null, [Validators.required]);
+
 
   constructor( private clienteService: ClienteService, private tecnicoService: TecnicoService, private chamadoService: ChamadoService, private toastService: ToastrService,
     private router: Router, private route: ActivatedRoute) { }
@@ -61,7 +56,6 @@ export class ChamadoUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.chamado.id = this.route.snapshot.paramMap.get('id');
     this.findById();
-    this.findAllClientes();
     this.findAllTecnicos();
   }
 
@@ -84,11 +78,7 @@ export class ChamadoUpdateComponent implements OnInit {
     })
   }
 
-  findAllClientes(): void {
-    this.clienteService.findAll().subscribe(res => {
-      this.clientes = res;
-    })
-  }
+
 
   findAllTecnicos(): void {
     this.tecnicoService.findAll().subscribe(res => {
@@ -98,7 +88,7 @@ export class ChamadoUpdateComponent implements OnInit {
 
   validaCampos(): boolean {
     return this.prioridade.valid && this.titulo.valid && this.status.valid &&
-            this.observacoes.valid && this.tecnico.valid && this.cliente.valid;
+            this.observacoes.valid && this.tecnico.valid ;
   }
 
 }

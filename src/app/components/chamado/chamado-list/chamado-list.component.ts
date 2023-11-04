@@ -7,7 +7,7 @@ import { ChamadoService } from 'src/app/services/chamado.service';
 @Component({
   selector: 'app-chamado-list',
   templateUrl: './chamado-list.component.html',
-  styleUrls: ['./chamado-list.component.scss']
+  styleUrls: ['./chamado-list.component.scss','../../../app.component.scss']
 })
 export class ChamadoListComponent implements OnInit {
 

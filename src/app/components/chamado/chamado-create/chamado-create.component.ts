@@ -3,16 +3,39 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Chamado } from 'src/app/models/chamado';
-import { Cliente } from 'src/app/models/cliente';
-import { Tecnico } from 'src/app/models/tecnico';
 import { ChamadoService } from 'src/app/services/chamado.service';
-import { ClienteService } from 'src/app/services/cliente.service';
-import { TecnicoService } from 'src/app/services/tecnico.service';
+import * as moment from 'moment';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { DatePipe } from '@angular/common';
+
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-chamado-create',
   templateUrl: './chamado-create.component.html',
-  styleUrls: ['./chamado-create.component.scss']
+  styleUrls: ['./chamado-create.component.scss'],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-br'},
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ]
 })
 export class ChamadoCreateComponent implements OnInit {
 
@@ -22,12 +45,9 @@ export class ChamadoCreateComponent implements OnInit {
     dataFechamento: '',
     prioridade: '',
     status: '',
-    titulo: '',
     observacoes: '',
     tecnico: '',
-    cliente: '',
     clinica: '',
-    nomeCliente: '',
     nomeTecnico: '',
     nomeClinica: '',
     dataNascimento: '',
@@ -41,30 +61,53 @@ export class ChamadoCreateComponent implements OnInit {
     nomePaciente: '',
     crmv: '',
     regiaoExame: '',
-    imagens: [],
     laudo: ''
   }
 
-  clientes: Cliente[] = [];
-  tecnicos: Tecnico[] = [];
+  imagens: File[] = [];
 
+  nomePaciente: FormControl = new FormControl(null, [Validators.required]);
+  dataNascimento: FormControl = new FormControl(moment(), [Validators.required]);
+  dataEstudo: FormControl = new FormControl(moment(), [Validators.required]);
+  idade: FormControl = new FormControl(null, [Validators.required]);
+  sexo: FormControl = new FormControl(null, [Validators.required]);
+  raca: FormControl = new FormControl(null, [Validators.required]);
+  especie: FormControl = new FormControl(null, [Validators.required]);
+  responsavelPaciente: FormControl = new FormControl(null, [Validators.required]);
+  medicoRequerente: FormControl = new FormControl(null, [Validators.required]);
+  crmv: FormControl = new FormControl(null, [Validators.required]);
+  regiaoExame: FormControl = new FormControl(null, [Validators.required]);
   prioridade: FormControl = new FormControl(null, [Validators.required]);
-  status: FormControl = new FormControl(null, [Validators.required]);
-  titulo: FormControl = new FormControl(null, [Validators.required]);
   observacoes: FormControl = new FormControl(null, [Validators.required]);
-  tecnico: FormControl = new FormControl(null, [Validators.required]);
-  cliente: FormControl = new FormControl(null, [Validators.required]);
+  
 
-  constructor( private clienteService: ClienteService, private tecnicoService: TecnicoService, private chamadoService: ChamadoService, private toastService: ToastrService,
+
+
+  constructor( private chamadoService: ChamadoService, private toastService: ToastrService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.findAllClientes();
-    this.findAllTecnicos();
+    // this.findAllClientes();
+    // this.findAllTecnicos();
   }
 
   create(): void{
-    this.chamadoService.create(this.chamado).subscribe(res =>{
+    this.chamado.clinica = 5;
+    this.chamado.tecnico = 2;
+    this.chamado.status = 0;
+
+    this.chamado.dataNascimento = this.toBrDateString(new Date(this.chamado.dataNascimento));
+    this.chamado.dataEstudo = this.toBrDateString(new Date(this.chamado.dataEstudo));
+
+
+    const formData = new FormData();
+    formData.append('obj', new Blob([JSON.stringify(this.chamado)], { type: 'application/json' })); // Converte o objeto para JSON
+
+    for (let i = 0; i < this.imagens.length; i++) {
+      formData.append('files', this.imagens[i]);
+    }
+
+    this.chamadoService.create(formData).subscribe(res =>{
       this.toastService.success('Criado chamado com sucesso', 'Novo Chamado');
       this.router.navigate(['chamados']);
     }, ex => {
@@ -72,21 +115,40 @@ export class ChamadoCreateComponent implements OnInit {
     })
   }
 
-  findAllClientes(): void {
-    this.clienteService.findAll().subscribe(res => {
-      this.clientes = res;
-    })
+  onFileChange(event: any) {
+    const files: FileList = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      this.imagens.push(files.item(i));
+    }
   }
 
-  findAllTecnicos(): void {
-    this.tecnicoService.findAll().subscribe(res => {
-      this.tecnicos = res;
-    })
+
+  toBrDateString(date: Date){
+    
+
+    const dateString = date.toLocaleString('pt-BR', {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    }).toString();
+    console.log(dateString);
+    return dateString;
   }
+
+  // findAllClientes(): void {
+  //   this.clienteService.findAll().subscribe(res => {
+  //     this.clientes = res;
+  //   })
+  // }
+
+  // findAllTecnicos(): void {
+  //   this.tecnicoService.findAll().subscribe(res => {
+  //     this.tecnicos = res;
+  //   })
+  // }
 
   validaCampos(): boolean {
-    return this.prioridade.valid && this.titulo.valid && this.status.valid &&
-            this.observacoes.valid && this.tecnico.valid && this.cliente.valid;
+    return this.prioridade.valid &&  this.observacoes.valid;
   }
 
 }

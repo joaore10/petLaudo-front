@@ -31,6 +31,10 @@ import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+
 
 // Componentes do projeto
 import { NavComponent } from './components/nav/nav.component';
@@ -116,6 +120,9 @@ import { LaudoUpdateComponent } from './components/laudo/laudo-update/laudo-upda
     MatCardModule,
     MatGridListModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMomentDateModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

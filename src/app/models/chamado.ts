@@ -4,12 +4,9 @@ export interface Chamado {
     dataFechamento?: string;
     prioridade: any;
     status: any;
-    titulo: string;
     observacoes: string;
     tecnico: any;
-    cliente: any;
     clinica: any;
-    nomeCliente: string;
     nomeTecnico: string;
     nomeClinica: string;
     dataNascimento: string;
@@ -23,6 +20,5 @@ export interface Chamado {
     nomePaciente: string;
     crmv: string;
     regiaoExame: string;
-    imagens: [];
     laudo: any;
 }

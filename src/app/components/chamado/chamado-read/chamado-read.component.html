@@ -2,12 +2,7 @@
     <h1 class="full-width">Leitura de Chamado</h1>
     <img class="full-width" src="assets/img/side-image.svg" alt="petLaudo-front">
 
-    <form class="form">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Titulo do Chamado</mat-label>
-          <input [disabled]="true" [(ngModel)]="chamado.titulo" name="titulo"  matInput >
-        </mat-form-field>
-    </form>
+
 
     <div class="status-prioridade">
         <mat-form-field appearance="outline">
@@ -29,14 +24,7 @@
         </mat-form-field>
     </div>
 
-    <div class="cliente">
-        <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Selecione um cliente</mat-label>
-            <select matNativeControl  [disabled]="true" [(ngModel)]="chamado.nomeCliente" name="cliente" >
-              <option>{{ chamado.nomeCliente }}</option>
-            </select>
-        </mat-form-field>
-    </div>
+
 
     <div class="tecnico">
         <mat-form-field class="full-width" appearance="outline">

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Chamado } from '../models/chamado';
@@ -20,8 +20,10 @@ export class ChamadoService {
     return this.http.get<Chamado[]>(`${API_CONFIG.baseUrl}/chamados`);
   }
 
-  create(chamado: Chamado): Observable<Chamado>{
-    return this.http.post<Chamado>(`${API_CONFIG.baseUrl}/chamados`, chamado);
+  create(formData: FormData): Observable<Chamado>{
+    // Crie um cabeçalho para o objeto JSON
+    const headers = new HttpHeaders();
+    return this.http.post<Chamado>(`${API_CONFIG.baseUrl}/chamados`, formData, { headers });
   }
 
   update(chamado: Chamado): Observable<Chamado>{

@@ -2,12 +2,22 @@
 
     <h1>Chamados de laudos</h1>
   
-    <button routerLink="create" mat-raised-button color="primary">Novo Chamado</button>
-  
-      <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Maria Bonita" #input>
-      </mat-form-field>
+      <mat-grid-list cols="12" gutterSize="30px" rowHeight="100px">
+
+        <mat-grid-tile [colspan]="6" [rowspan]="1">
+          <mat-form-field appearance="standard">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Maria Bonita" #input>
+          </mat-form-field>
+        </mat-grid-tile>
+    
+        <mat-grid-tile [colspan]="6" [rowspan]="1">
+          <div class="d-flex justify-content-right w-100">
+            <button routerLink="create" mat-raised-button color="primary">Novo Chamado</button>
+          </div>
+        </mat-grid-tile>
+    
+      </mat-grid-list>
 
       <mat-radio-group color="primary">
         <mat-radio-button (click)="orderByStatus(0)" value="0">ABERTO</mat-radio-button>
