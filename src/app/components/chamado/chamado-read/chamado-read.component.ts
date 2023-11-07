@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Chamado } from 'src/app/models/chamado';
 import { ChamadoService } from 'src/app/services/chamado.service';
@@ -34,25 +34,24 @@ export class ChamadoReadComponent implements OnInit {
     nomePaciente: '',
     crmv: '',
     regiaoExame: '',
-    laudo: ''
+    laudo: '',
+    imagens: []
   }
 
-  constructor(  private chamadoService: ChamadoService, private toastService: ToastrService,
-   private route: ActivatedRoute) { }
+  
+  constructor( private chamadoService: ChamadoService, private toastService: ToastrService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.chamado.id = this.route.snapshot.paramMap.get('id');
     this.findById();
   }
 
-  findById(): void{
+
+  findById():void{
     this.chamadoService.findById(this.chamado.id).subscribe(res => {
+      console.log(res)
       this.chamado = res;
       this.chamado.prioridade = this.chamado.prioridade.toString();
-      this.chamado.status = this.chamado.status.toString();
-    }, ex =>{
-      this.toastService.error(ex.error.error);
     })
   }
-
 }

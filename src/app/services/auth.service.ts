@@ -21,8 +21,10 @@ export class AuthService {
     })
   }
 
-  successfulLogin(authToken: string){
+  successfulLogin(authToken: string, userId: string, perfis: string){
     localStorage.setItem('token', authToken);
+    localStorage.setItem('userId', userId);
+    localStorage.setItem('userRole', perfis)
   }
 
   isAuthenticated(){

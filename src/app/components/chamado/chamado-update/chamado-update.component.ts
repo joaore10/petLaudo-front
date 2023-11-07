@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { Chamado } from 'src/app/models/chamado';
-import { Cliente } from 'src/app/models/cliente';
-import { Tecnico } from 'src/app/models/tecnico';
 import { ChamadoService } from 'src/app/services/chamado.service';
-import { ClienteService } from 'src/app/services/cliente.service';
-import { TecnicoService } from 'src/app/services/tecnico.service';
+import { MY_FORMATS } from '../chamado-create/chamado-create.component';
 
 @Component({
   selector: 'app-chamado-update',
   templateUrl: './chamado-update.component.html',
-  styleUrls: ['./chamado-update.component.scss']
+  styleUrls: ['./chamado-update.component.scss'],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-br'},
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ]
 })
 export class ChamadoUpdateComponent implements OnInit {
 
@@ -38,57 +47,98 @@ export class ChamadoUpdateComponent implements OnInit {
     nomePaciente: '',
     crmv: '',
     regiaoExame: '',
-    laudo: ''
+    laudo: '',
+    imagens: []
   }
 
-  tecnicos: Tecnico[] = [];
+  imagens: File[] = [];
 
+  nomePaciente: FormControl = new FormControl(null, [Validators.required]);
+  dataNascimento: FormControl = new FormControl(moment(), [Validators.required]);
+  dataEstudo: FormControl = new FormControl(moment(), [Validators.required]);
+  idade: FormControl = new FormControl(null, [Validators.required]);
+  sexo: FormControl = new FormControl(null, [Validators.required]);
+  raca: FormControl = new FormControl(null, [Validators.required]);
+  especie: FormControl = new FormControl(null, [Validators.required]);
+  responsavelPaciente: FormControl = new FormControl(null, [Validators.required]);
+  medicoRequerente: FormControl = new FormControl(null, [Validators.required]);
+  crmv: FormControl = new FormControl(null, [Validators.required]);
+  regiaoExame: FormControl = new FormControl(null, [Validators.required]);
   prioridade: FormControl = new FormControl(null, [Validators.required]);
-  status: FormControl = new FormControl(null, [Validators.required]);
-  titulo: FormControl = new FormControl(null, [Validators.required]);
   observacoes: FormControl = new FormControl(null, [Validators.required]);
-  tecnico: FormControl = new FormControl(null, [Validators.required]);
-
-
-  constructor( private clienteService: ClienteService, private tecnicoService: TecnicoService, private chamadoService: ChamadoService, private toastService: ToastrService,
+  
+  
+  constructor( private chamadoService: ChamadoService, private toastService: ToastrService,
     private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.chamado.id = this.route.snapshot.paramMap.get('id');
     this.findById();
-    this.findAllTecnicos();
-  }
-
-  findById(): void{
-    this.chamadoService.findById(this.chamado.id).subscribe(res => {
-      this.chamado = res;
-      this.chamado.prioridade = this.chamado.prioridade.toString();
-      this.chamado.status = this.chamado.status.toString();
-    }, ex =>{
-      this.toastService.error(ex.error.error);
-    })
   }
 
   update(): void{
-    this.chamadoService.update(this.chamado).subscribe(res =>{
-      this.toastService.success('Atualizado com sucesso', 'Atualizar Chamado');
+    this.chamado.clinica = 5;
+    this.chamado.tecnico = 2;
+    this.chamado.status = 0;
+
+    this.chamado.dataNascimento = this.toBrDateString(new Date(this.chamado.dataNascimento));
+    this.chamado.dataEstudo = this.toBrDateString(new Date(this.chamado.dataEstudo));
+
+    const formData = new FormData();
+    formData.append('obj', new Blob([JSON.stringify(this.chamado)], { type: 'application/json' })); // Converte o objeto para JSON
+
+    for (let i = 0; i < this.imagens.length; i++) {
+      formData.append('files', this.imagens[i]);
+    }
+
+    this.chamadoService.update(this.chamado.id,formData).subscribe(res =>{
+      this.toastService.success('Chamado editado com sucesso', 'Editar Chamado');
       this.router.navigate(['chamados']);
     }, ex => {
       this.toastService.error(ex.error.error);
     })
   }
 
+  onFileChange(event: any) {
+    const files: FileList = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      this.imagens.push(files.item(i));
+    }
+  }
 
+  findById():void{
+    this.chamadoService.findById(this.chamado.id).subscribe(res => {
+      this.chamado = res;
 
-  findAllTecnicos(): void {
-    this.tecnicoService.findAll().subscribe(res => {
-      this.tecnicos = res;
+      this.chamado.prioridade = this.chamado.prioridade.toString();
+
+      var dataEstudo = new Date(this.chamado.dataEstudo);
+      var dataNascimento = new Date(this.chamado.dataNascimento.toString());
+      this.chamado.dataEstudo = dataEstudo.toISOString();
+      this.chamado.dataNascimento = dataNascimento.toISOString();
     })
   }
 
+
+  toBrDateString(date: Date){
+    const dateString = date.toLocaleString('pt-BR', {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    }).toString();
+    return dateString;
+  }
+
+
+  deletaImagem(nameImagem: any, listaImagens:any){
+    var foundIndex = listaImagens.indexOf(nameImagem);
+    if(foundIndex > -1){
+      listaImagens.splice(foundIndex, 1);
+    }
+  }
+
   validaCampos(): boolean {
-    return this.prioridade.valid && this.titulo.valid && this.status.valid &&
-            this.observacoes.valid && this.tecnico.valid ;
+    return this.prioridade.valid &&  this.observacoes.valid;
   }
 
 }

@@ -61,7 +61,8 @@ export class ChamadoCreateComponent implements OnInit {
     nomePaciente: '',
     crmv: '',
     regiaoExame: '',
-    laudo: ''
+    laudo: '',
+    imagens: []
   }
 
   imagens: File[] = [];
@@ -80,9 +81,7 @@ export class ChamadoCreateComponent implements OnInit {
   prioridade: FormControl = new FormControl(null, [Validators.required]);
   observacoes: FormControl = new FormControl(null, [Validators.required]);
   
-
-
-
+  
   constructor( private chamadoService: ChamadoService, private toastService: ToastrService,
     private router: Router) { }
 
@@ -124,15 +123,20 @@ export class ChamadoCreateComponent implements OnInit {
 
 
   toBrDateString(date: Date){
-    
-
     const dateString = date.toLocaleString('pt-BR', {
       year: 'numeric',
       month: 'numeric',
       day: 'numeric',
     }).toString();
-    console.log(dateString);
+
     return dateString;
+  }
+
+  deletaImagem(nameImagem: any, listaImagens:any){
+    var foundIndex = listaImagens.indexOf(nameImagem);
+    if(foundIndex > -1){
+      listaImagens.splice(foundIndex, 1);
+    }
   }
 
   // findAllClientes(): void {

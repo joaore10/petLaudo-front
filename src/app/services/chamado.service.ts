@@ -26,7 +26,8 @@ export class ChamadoService {
     return this.http.post<Chamado>(`${API_CONFIG.baseUrl}/chamados`, formData, { headers });
   }
 
-  update(chamado: Chamado): Observable<Chamado>{
-    return this.http.put<Chamado>(`${API_CONFIG.baseUrl}/chamados/${chamado.id}`, chamado);
+  update(id: BigInteger,formData: FormData): Observable<Chamado>{
+    const headers = new HttpHeaders();
+    return this.http.put<Chamado>(`${API_CONFIG.baseUrl}/chamados/${id}`, formData, { headers });
   }
 }

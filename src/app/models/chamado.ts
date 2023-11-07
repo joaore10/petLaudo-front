@@ -21,4 +21,5 @@ export interface Chamado {
     crmv: string;
     regiaoExame: string;
     laudo: any;
+    imagens: string[];
 }

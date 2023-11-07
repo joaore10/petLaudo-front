@@ -133,7 +133,12 @@
               <div class="col-sm-12 text-left">
                 <button type="button" mat-raised-button (click)="fileInput.click()">Adicionar Imagem</button>
                 <input hidden (change)="onFileChange($event)" #fileInput multiple type="file" accept="image/*">
-                <span class="file-name" *ngFor="let imagem of imagens"><br>{{imagem ? imagem.name : 'Nenhum arquivo selecionado'}}</span>
+                <span class="file-name" *ngFor="let imagem of imagens"><br>
+                  {{imagem.name}} 
+                  <button mat-icon-button color="warn" aria-label="icon" (click)="deletaImagem(imagem, imagens)">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </span>
                
               </div>
             </div>

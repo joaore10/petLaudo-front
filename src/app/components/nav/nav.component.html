@@ -7,15 +7,15 @@
             <i class="material-icons">home</i>
             Home
         </a>
-        <a mat-list-item routerLink="tecnicos">
+        <a mat-list-item routerLink="tecnicos" *ngIf="userRole === 'ROLE_ADMIN'">
             <i class="material-icons">account_circle</i>
             Veterinários
         </a>
-        <a mat-list-item routerLink="clinicas">
+        <a mat-list-item routerLink="clinicas" *ngIf="userRole === 'ROLE_ADMIN'">
           <i class="material-icons">person</i>
           Clientes
         </a>
-        <a mat-list-item routerLink="laudos">
+        <a mat-list-item routerLink="laudos" *ngIf="userRole !== 'ROLE_CLIENTE'">
           <i class="material-icons">assignment</i>
           Laudos
         </a>
@@ -36,7 +36,7 @@
         <button mat-icon-button class="icon" aria-label="icon-button with menu icon" (click)="drawer.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
-        <span>Boas vindas</span>
+        <span>Boas vindas, {{userName}}</span>
         <span class="spacer"></span>
       </mat-toolbar>
     
