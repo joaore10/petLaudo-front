@@ -14,7 +14,7 @@
                     <div class="col-sm-6">
                         <mat-form-field class="full-width" appearance="outline">
                             <mat-label>Selecione o Chamado</mat-label>
-                            <mat-select  [(ngModel)]="laudo.chamadoId" name="chamadoId" [formControl]="chamadoId" (selectionChange)="selectChamado(laudo.chamadoId)" required>
+                            <mat-select  [(ngModel)]="laudo.chamadoId" name="chamadoId" [formControl]="chamadoId" [disabled]="disableChamadoSelect" [(value)]="laudo.chamadoId" (selectionChange)="selectChamado(laudo.chamadoId)" required>
                                 <mat-option *ngFor="let chamado of chamados"  value="{{ chamado.id }}" >
                                 {{chamado.nomePaciente}} - {{chamado.nomeClinica}}
                                 </mat-option>

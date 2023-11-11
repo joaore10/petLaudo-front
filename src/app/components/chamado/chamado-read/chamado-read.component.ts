@@ -51,7 +51,6 @@ export class ChamadoReadComponent implements OnInit {
 
   findById():void{
     this.chamadoService.findById(this.chamado.id).subscribe(res => {
-      console.log(res)
       this.chamado = res;
       this.chamado.prioridade = this.chamado.prioridade.toString();
     })

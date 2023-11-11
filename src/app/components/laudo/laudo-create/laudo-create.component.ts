@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog , MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Chamado } from 'src/app/models/chamado';
 import { Laudo } from 'src/app/models/laudo';
@@ -27,20 +27,26 @@ export class LaudoCreateComponent implements OnInit {
   chamados: Chamado[] = [];
   chamado: any = {};
 
+  disableChamadoSelect = false;
   projecoes: FormControl = new FormControl(null, [Validators.required]);
   achadosRadiograficos: FormControl = new FormControl(null, [Validators.required]);
   impressoesDiagnosticas: FormControl = new FormControl(null, [Validators.required]);
   chamadoId: FormControl = new FormControl(null, [Validators.required]);
 
   constructor( private chamadoService: ChamadoService, private laudoService: LaudoService, private toastService: ToastrService,
-    private router: Router, public dialog: MatDialog) { }
+    private router: Router, public dialog: MatDialog, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.chamado.id = this.route.snapshot.paramMap.get('id');
+    if(this.chamado.id){
+      this.laudo.chamadoId = this.chamado.id;
+      this.selectChamado(this.chamado.id);
+      this.disableChamadoSelect = true;
+    }
     this.findAllChamados();
   }
 
   create(): void{
-    console.log(this.laudo);
     this.laudoService.create(this.laudo).subscribe(res =>{
       this.toastService.success('Criado laudo com sucesso', 'Novo Laudo');
       this.router.navigate(['laudos']);

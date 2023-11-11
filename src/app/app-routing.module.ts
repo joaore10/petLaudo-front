@@ -55,6 +55,7 @@ const routes: Routes = [
       { path: 'laudos', component: LaudoListComponent},
       { path: 'laudos/create', component: LaudoCreateComponent},
       { path: 'laudos/update/:id', component: LaudoUpdateComponent},
+      { path: 'laudos/create/:id', component: LaudoCreateComponent},
       //{ path: 'laudos/read/:id', component: LaudoReadComponent},
     ]
   }
