@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Chamado } from 'src/app/models/chamado';
 import { ChamadoService } from 'src/app/services/chamado.service';
+import { DialogContentDialog } from '../../laudo/laudo-create/laudo-create.component';
 
 
 @Component({
@@ -39,7 +41,7 @@ export class ChamadoReadComponent implements OnInit {
   }
 
   
-  constructor( private chamadoService: ChamadoService, private toastService: ToastrService, private route: ActivatedRoute) { }
+  constructor( private chamadoService: ChamadoService, private toastService: ToastrService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.chamado.id = this.route.snapshot.paramMap.get('id');
@@ -54,4 +56,18 @@ export class ChamadoReadComponent implements OnInit {
       this.chamado.prioridade = this.chamado.prioridade.toString();
     })
   }
+
+  ampliarImagem(imgSrc: any) {
+    const dialogRef = this.dialog.open(DialogContentDialog, {
+      data: {
+        src: imgSrc
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog Closed`);
+    });
+  }
+
+
 }

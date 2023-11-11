@@ -53,9 +53,10 @@
               <div class="col-sm-4">
                 <mat-form-field appearance="legacy" class="w-100">
                   <mat-label>Gênero</mat-label>
-                  <select matNativeControl  [disabled]="true" [(ngModel)]="chamado.sexo" name="sexo">
-                    <option>{{ chamado.sexo }}</option>
-                  </select>
+                  <mat-select [(ngModel)]="chamado.sexo" name="sexo" [(value)]="chamado.status" [disabled]="true">
+                    <mat-option value="Macho">Macho</mat-option>
+                    <mat-option value="Fêmea">Fêmea</mat-option>
+                  </mat-select>
                 </mat-form-field>
               </div>
   
@@ -98,9 +99,11 @@
               <div class="col-sm-6">
                 <mat-form-field appearance="legacy" class="w-100">
                   <mat-label>Selecione uma prioridade</mat-label>
-                  <select matNativeControl [(ngModel)]="chamado.prioridade" name="prioridade" [disabled]="true" >
-                    <option>{{chamado.prioridade}}</option>
-                  </select>
+                  <mat-select [(ngModel)]="chamado.prioridade" name="prioridade" [(value)]="chamado.status" [disabled]="true" >
+                    <mat-option value=0>BAIXA</mat-option>
+                    <mat-option value=1>MÉDIA</mat-option>
+                    <mat-option value=2>ALTA</mat-option>
+                  </mat-select>
               </mat-form-field>
               </div>
             </div>
@@ -124,7 +127,7 @@
                   <mat-card class="card">
                       <img mat-card-image src="{{img}}" alt="Foto do laudo">
                       <mat-card-actions>
-                        <button mat-raised-button  color="primary">Ampliar</button>
+                        <button mat-raised-button (click)="ampliarImagem(img)" color="primary">Ampliar</button>
                       </mat-card-actions>
                     </mat-card>
               </div>
