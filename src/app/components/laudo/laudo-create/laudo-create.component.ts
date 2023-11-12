@@ -37,7 +37,7 @@ export class LaudoCreateComponent implements OnInit {
     private router: Router, public dialog: MatDialog, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.chamado.id = this.route.snapshot.paramMap.get('id');
+    this.chamado.id = this.route.snapshot.paramMap.get('chamadoId');
     if(this.chamado.id){
       this.laudo.chamadoId = this.chamado.id;
       this.selectChamado(this.chamado.id);

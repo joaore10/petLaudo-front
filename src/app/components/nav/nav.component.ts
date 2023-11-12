@@ -25,7 +25,7 @@ export class NavComponent implements OnInit {
       this.findTecnicoById(localStorage.getItem('userId'));
     }
     
-    this.router.navigate(['laudos/create/1']);
+    this.router.navigate(['laudos']);
   }
   
   logout(){
