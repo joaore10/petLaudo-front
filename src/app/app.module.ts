@@ -62,6 +62,7 @@ import { LaudoListComponent } from './components/laudo/laudo-list/laudo-list.com
 import { LaudoCreateComponent } from './components/laudo/laudo-create/laudo-create.component';
 import { LaudoDeleteComponent } from './components/laudo/laudo-delete/laudo-delete.component';
 import { LaudoUpdateComponent } from './components/laudo/laudo-update/laudo-update.component';
+import { LaudoReadComponent } from './components/laudo/laudo-read/laudo-read.component';
 
 
 
@@ -92,7 +93,8 @@ import { LaudoUpdateComponent } from './components/laudo/laudo-update/laudo-upda
     LaudoListComponent,
     LaudoCreateComponent,
     LaudoDeleteComponent,
-    LaudoUpdateComponent
+    LaudoUpdateComponent,
+    LaudoReadComponent
   ],
   imports: [
     BrowserModule,

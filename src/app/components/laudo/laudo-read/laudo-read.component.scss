@@ -1,0 +1,57 @@
+.form-laudo{
+    margin: auto 3rem 3rem 3rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #efefef;
+}
+
+.b-1{
+    border: 3px solid red;
+}
+
+.mat-input-element:disabled{
+    color: black;
+}
+
+.full-width{
+    width: 100%;
+}
+
+h1,img, p {
+    text-align: center;
+}
+
+
+.status-prioridade{
+    display: flex;
+    justify-content: space-between;
+
+    mat-form-field{
+        width: 49%;
+    }
+}
+
+.descricao{
+    textarea{
+        min-height: 6rem;
+        max-height: 10rem;
+    }
+}
+
+button{
+    margin-top: .5rem;
+}
+
+p{
+    margin-top: 3rem;
+    opacity: .5;
+}
+
+.container-dialog{
+    width: 100% !important;
+    max-height: 93vh !important;
+}
+
+.img-container{
+    padding-bottom: 2rem;
+}
