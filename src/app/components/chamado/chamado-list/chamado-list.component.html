@@ -81,14 +81,17 @@
             <ng-container matColumnDef="acoes">
               <th mat-header-cell *matHeaderCellDef> Ações </th>
               <td mat-cell *matCellDef="let element"> 
-                <a routerLink="../laudos/create/{{element.id}}">
+                <a routerLink="../laudos/create/{{element.id}}" *ngIf="element.status !== 2">
                   <i class="material-icons create">assignment_add</i>
                 </a>  
-                <a routerLink="update/{{element.id}}">
+                <a routerLink="update/{{element.id}}" *ngIf="element.status !== 2">
                   <i class="material-icons edit">edit</i>
                 </a>  
                 <a routerLink="read/{{ element.id }}">
                   <i class="material-icons visibility">visibility</i>
+                </a>
+                <a  *ngIf="element.status === 2">
+                  <i class="material-icons download">download</i>
                 </a> 
               </td>
             </ng-container>

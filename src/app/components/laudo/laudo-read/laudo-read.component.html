@@ -159,7 +159,7 @@
                         <form class="form">
                             <mat-form-field class="full-width descricao" appearance="outline">
                                 <mat-label>Projeções</mat-label>
-                                <textarea [(ngModel)]="laudo.projecoes" name="projecoes" [formControl]="projecoes" required matInput placeholder="Ex. trovar bateria de notebook queimada..."></textarea>
+                                <textarea [(ngModel)]="laudo.projecoes" name="projecoes" matInput [disabled]="true"></textarea>
                             </mat-form-field>
                         </form>
                     </div>
@@ -167,7 +167,7 @@
                         <form class="form">
                             <mat-form-field class="full-width descricao" appearance="outline">
                                 <mat-label>Achados Radiográficos</mat-label>
-                                <textarea [(ngModel)]="laudo.achadosRadiograficos" name="achadosRadiograficos" [formControl]="achadosRadiograficos" required matInput placeholder="Ex. trovar bateria de notebook queimada..."></textarea>
+                                <textarea [(ngModel)]="laudo.achadosRadiograficos" matInput name="achadosRadiograficos" [disabled]="true"></textarea>
                             </mat-form-field>
                         </form>
                     </div>
@@ -178,7 +178,7 @@
                         <form class="form">
                             <mat-form-field class="full-width descricao" appearance="outline">
                                 <mat-label>Impressões Diagnósticasa</mat-label>
-                                <textarea [(ngModel)]="laudo.impressoesDiagnosticas" name="impressoesDiagnosticas" [formControl]="impressoesDiagnosticas" required matInput placeholder="Ex. trovar bateria de notebook queimada..."></textarea>
+                                <textarea [(ngModel)]="laudo.impressoesDiagnosticas" matInput name="impressoesDiagnosticas" [disabled]="true"></textarea>
                             </mat-form-field>
                         </form>
                     </div>
@@ -186,7 +186,6 @@
 
                 <div class="row">
                     <div class="col-sm-12 text-right">
-                        <button class="mr-3" (click)="update()" [disabled]="!validaCampos()" mat-raised-button color="primary">Editar laudo</button>
                         <button routerLink="../../" mat-raised-button color="warn">Voltar</button>
                     </div>
                 </div>

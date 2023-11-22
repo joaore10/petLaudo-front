@@ -30,13 +30,11 @@ export class LaudoReadComponent implements OnInit {
   chamado: any = {};
 
   disableChamadoSelect = false;
-  projecoes: FormControl = new FormControl(null, [Validators.required]);
-  achadosRadiograficos: FormControl = new FormControl(null, [Validators.required]);
-  impressoesDiagnosticas: FormControl = new FormControl(null, [Validators.required]);
+
   chamadoId: FormControl = new FormControl(null, [Validators.required]);
 
-  constructor( private chamadoService: ChamadoService, private laudoService: LaudoService, private toastService: ToastrService,
-    private router: Router, public dialog: MatDialog, private route: ActivatedRoute) { }
+  constructor( private chamadoService: ChamadoService, private laudoService: LaudoService,
+    public dialog: MatDialog, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.laudo.id = this.route.snapshot.paramMap.get('id');
@@ -44,15 +42,6 @@ export class LaudoReadComponent implements OnInit {
       this.findLaudoById();
     }
     this.findAllChamados();
-  }
-
-  update(): void{
-    this.laudoService.update(this.laudo).subscribe(res =>{
-      this.toastService.success('Laudo editado com sucesso', 'Editar Laudo');
-      this.router.navigate(['laudos']);
-    }, ex => {
-      this.toastService.error(ex.error.error);
-    })
   }
 
   findAllChamados(): void {
@@ -64,8 +53,6 @@ export class LaudoReadComponent implements OnInit {
   findLaudoById(): void{
     this.laudoService.findById(this.laudo.id).subscribe(res => {
       this.laudo = res;
-      //busca as infos do chamado
-      console.log(this.laudo.chamadoId);
       this.selectChamado(this.laudo.chamadoId);
       this.laudo.chamadoId = this.laudo.chamadoId.toString();
       this.disableChamadoSelect = true;
@@ -77,11 +64,6 @@ export class LaudoReadComponent implements OnInit {
     this.chamadoService.findById(chamado).subscribe(res => {
       this.chamado = res;
     })
-  }
-
-  validaCampos(): boolean {
-    return this.projecoes.valid && this.achadosRadiograficos.valid && this.impressoesDiagnosticas.valid &&
-            this.chamadoId.valid;
   }
 
   ampliarImagem(imgSrc: any) {

@@ -111,14 +111,16 @@ export class ChamadoUpdateComponent implements OnInit {
       this.chamado = res;
 
       this.chamado.prioridade = this.chamado.prioridade.toString();
+      
+      var dataNascimento = this.chamado.dataNascimento.split("/");
+      var dateNascimento = new Date(parseInt(dataNascimento[2]), parseInt(dataNascimento[1]), parseInt(dataNascimento[0])) ;
+      this.chamado.dataNascimento = dateNascimento.toISOString();
 
-      var dataEstudo = new Date(this.chamado.dataEstudo);
-      var dataNascimento = new Date(this.chamado.dataNascimento.toString());
-      this.chamado.dataEstudo = dataEstudo.toISOString();
-      this.chamado.dataNascimento = dataNascimento.toISOString();
+      var dataEstudo = this.chamado.dataEstudo.split("/");
+      var dateEstudo = new Date(parseInt(dataEstudo[2]), parseInt(dataEstudo[1]), parseInt(dataEstudo[0])) ;
+      this.chamado.dataEstudo = dateEstudo.toISOString();
     })
   }
-
 
   toBrDateString(date: Date){
     const dateString = date.toLocaleString('pt-BR', {
