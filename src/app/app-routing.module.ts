@@ -24,6 +24,7 @@ import { LaudoListComponent } from './components/laudo/laudo-list/laudo-list.com
 import { LaudoCreateComponent } from './components/laudo/laudo-create/laudo-create.component';
 import { LaudoUpdateComponent } from './components/laudo/laudo-update/laudo-update.component';
 import { LaudoReadComponent } from './components/laudo/laudo-read/laudo-read.component';
+import { PdfCreateComponent } from './components/pdf/pdf-create/pdf-create.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,8 @@ const routes: Routes = [
       { path: 'laudos/update/:id', component: LaudoUpdateComponent},
       { path: 'laudos/create/:chamadoId', component: LaudoCreateComponent},
       { path: 'laudos/read/:id', component: LaudoReadComponent},
+
+      { path: 'printPDF', component: PdfCreateComponent},
     ]
   }
 ];

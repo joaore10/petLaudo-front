@@ -25,7 +25,7 @@ export class NavComponent implements OnInit {
       this.findTecnicoById(localStorage.getItem('userId'));
     }
     
-    this.router.navigate(['home']);
+    this.router.navigate(['printPDF']);
   }
   
   logout(){
