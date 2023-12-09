@@ -1,40 +1,101 @@
 <button (click)="createPDF()">Baixar Laudo</button>
 <br>
 
+
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 mx-auto">
-            <div id="laudoTemplate" #laudoTemplate class="container-a4 mx-auto">
-                <table style="width: 100%;">
-                    <thead>
-                        <tr>
-                            <td>
-                                <div class="row">
-                                    
-                                    <div class="col-sm-5">
-                                        <p>Laudo: <b>1</b></p>
-                                        <p>Nome do Animal: <b>Thor de Leão</b></p>
-                                        <p>Região do exame: <b>Abdomen</b></p>
-                                        <p>Veterinário solicitante: <b>Dr. Rossi</b></p>
-                                        <p>Clinica: <b>Amar Diagnostico</b></p>
-                                        <p>Data do Exame: <b>22/11/2023</b></p>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <p>Idade: <b>1</b></p>
-                                        <p>Raça: <b>Pitbull</b></p>
-                                        <p>Espécie: <b>Cachorro</b></p>
-                                        <p>Sexo: <b>Macho</b></p>
-                                        <p>Responsável: <b>Maria Helena</b></p>
-                                        <p>Data do Estudo: <b>11/11/2023</b></p>
-                                    </div>
+        <div class="col-sm-12">
+            <div id="laudoTemplate" #laudoTemplate>
+                <div class="bar-header"></div>
+                <div class="container">
+                    <div class="row header-pdf">
+                        <div class="col-sm-3">
+                            <img src="../../../../assets/img/logo_login2.svg" alt="teste" class="img-logo" >
+                        </div>
+                        <div class="col-sm-4">
+                            <p>Nº LAUDO: <b>id</b></p>
+                            <p>NOME DO ANIMAL: <b>nomePaciente</b></p>
+                            <p>REGIÃO EXAME: <b>regiaoExame</b></p>
+                            <p>VETERINÁRIO SOLICITANTE: <b>medicoRequerente</b></p>
+                            <p>CLINICA: <b>nomeClinica</b></p>
+                            <p>DATA DO EXAME: <b>dataEstudo</b></p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p>IDADE: <b>idade</b></p>
+                            <p>RAÇA: <b>raca</b></p>
+                            <p>ESPECIE: <b>especie</b></p>
+                            <p>SEXO: <b>sexo</b></p>
+                            <p>RESPONSAVEL: <b>responsavelPaciente</b></p>
+                            <p class="pb-2">DATA DE NASCIMENTO: <b>dataNascimento</b></p>
+                        </div>
+                    </div>
+                    
+                    <div class="divisor"></div>
+                    
+                    <div class="row ">
+                        <div class="col-sm-12">
+                            <div class="body-pdf">
+                                <h1>
+                                    Regiões
+                                </h1>
+                                <p>
+                                    Tórax
+                                </p>
+
+                                <h1>
+                                    Projeções
+                                </h1>
+                                <p>
+                                    Laterolaterais e ventrodorsal.
+                                </p>
+
+                                <h1>
+                                    Achados radiográficos
+                                </h1>
+                                <p>
+                                    Lúmen e trajeto traqueal mantidos.
+                                    Campos pulmonares dentro do limite da normalidade radiográfica.
+                                    Silhueta cardíaca sem alterações dignas de nota.
+                                    Diafragma íntegro.
+                                    Partes ósseas preservadas. 
+                                    Demais regiões passiveis de avaliação dentro do limite da normalidade radiográfica.
+
+                                </p>
+
+                                <h1>
+                                    Impressões diagnósticas. 
+                                </h1>
+                                <p>
+                                    Imagens dentro do limite da normalidade radiográfica.
+                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-break"></div>
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div>
+                                <div class="img-container">
+                                    <img src="../../../../assets/img/DX001232_3.jpg" alt="" srcset=""  #img1>
                                 </div>
-                            </td>
-                        </tr>
-                    </thead>
-                </table>
+                                <div class="page-break"></div>
+
+                                <div class="img-container">
+                                    <img src="../../../../assets/img/DX001232_3.jpg" alt="" srcset=""  #img2>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 

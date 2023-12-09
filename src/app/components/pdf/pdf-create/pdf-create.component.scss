@@ -1,20 +1,74 @@
 #laudoTemplate{
+    background-color: #fdfdfd;
+}
 
-    &.container-a4{
-        max-width: 119mm;
-        height: 166.8mm;
-        padding: 0;
-        margin: 0;
-        background-color: aqua;
-        
-        p{
-            font-size: 5pt;
-            line-height: 1pt;
+.bar-header{
+    background-color: #183942;
+    width: 100.1%;
+    height: 15px;
+    margin-bottom: 5px;
+}
+
+.divisor{
+    background-color: #000F11;
+    width: 100.1%;
+    height: 1px;
+    opacity: 0.2;
+}
+
+.header-pdf{
+    margin-bottom: 5px;
+    p{
+        font-size: 6pt;
+        color: #818a8a;
+        margin-top: 3px;
+        margin-bottom: 1px;
+        line-height: 13px;
+
+        b{
+            color: #000F11;
+            font-size: 7pt;
         }
     }
+}
 
 
-    .row{
-        margin: 0;
+.body-pdf{
+    padding: 20px 40px 20px 40px;
+    //min-height: 1123px;
+    h1{
+        font-size: 14pt;
+        font-weight: bold;
+        line-height: 110%;
+        margin-bottom: 4px;
     }
+    p{
+        font-size: 10pt;
+        line-height: 12pt;
+        margin-bottom: 28px;
+    }
+}
+
+
+.img-container{
+   min-height: 1030px;
+   padding: 50px 40px 20px 40px;
+   
+    img{
+        width: 100%;
+    }
+}
+
+.img-logo{
+    width: 160px;
+    padding: 10px 10px;
+}
+
+
+.bg-aqua{
+    background-color: aqua;
+}
+
+.bg-red{
+    background-color: red;
 }
