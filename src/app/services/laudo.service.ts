@@ -26,4 +26,29 @@ export class LaudoService {
   update(laudo: Laudo): Observable<Laudo>{
     return this.http.put<Laudo>(`${API_CONFIG.baseUrl}/laudos/${laudo.id}`, laudo);
   }
+
+  downloadImagesFromBackend(imageUrls: string[]): Promise<string[]> {
+    const promises: Promise<string>[] = [];
+
+    for (const imageUrl of imageUrls) {
+      const promise = new Promise<string>((resolve, reject) => {
+        this.http.get(`${API_CONFIG.baseUrl}/download/${imageUrl}`, { responseType: 'blob' }).subscribe((blob: Blob) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            const base64data = reader.result as string;
+            resolve(base64data);
+          };
+          reader.readAsDataURL(blob);
+        }, (error) => {
+          reject(error);
+        });
+      });
+
+      promises.push(promise);
+    }
+
+    return Promise.all(promises);
+  }
+
+  
 }

@@ -1,57 +1,74 @@
-.form-laudo{
-    margin: auto 3rem 3rem 3rem;
-    padding: 1rem;
-    border-radius: 1rem;
-    background-color: #efefef;
+#laudoTemplate{
+    background-color: #fdfdfd;
 }
 
-.b-1{
-    border: 3px solid red;
+.bar-header{
+    background-color: #183942;
+    width: 100.1%;
+    height: 15px;
+    margin-bottom: 5px;
 }
 
-.mat-input-element:disabled{
-    color: black;
+.divisor{
+    background-color: #000F11;
+    width: 100.1%;
+    height: 1px;
+    opacity: 0.2;
 }
 
-.full-width{
-    width: 100%;
-}
+.header-pdf{
+    margin-bottom: 5px;
+    p{
+        font-size: 6pt;
+        color: #818a8a;
+        margin-top: 3px;
+        margin-bottom: 1px;
+        line-height: 13px;
 
-h1,img, p {
-    text-align: center;
-}
-
-
-.status-prioridade{
-    display: flex;
-    justify-content: space-between;
-
-    mat-form-field{
-        width: 49%;
+        b{
+            color: #000F11;
+            font-size: 7pt;
+        }
     }
 }
 
-.descricao{
-    textarea{
-        min-height: 6rem;
-        max-height: 10rem;
+
+.body-pdf{
+    padding: 20px 40px 20px 40px;
+    //min-height: 1123px;
+    h1{
+        font-size: 14pt;
+        font-weight: bold;
+        line-height: 110%;
+        margin-bottom: 4px;
+    }
+    p{
+        font-size: 10pt;
+        line-height: 12pt;
+        margin-bottom: 28px;
     }
 }
 
-button{
-    margin-top: .5rem;
-}
-
-p{
-    margin-top: 3rem;
-    opacity: .5;
-}
-
-.container-dialog{
-    width: 100% !important;
-    max-height: 93vh !important;
-}
 
 .img-container{
-    padding-bottom: 2rem;
+   min-height: 1030px;
+   padding: 50px 40px 20px 40px;
+   
+    img{
+        width: 100%;
+    }
+}
+
+.img-logo{
+    width: 160px;
+    padding: 10px 10px;
+}
+
+
+.bg-aqua{
+    background-color: aqua;
+}
+
+.bg-red{
+    background-color: red;
 }

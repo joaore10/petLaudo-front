@@ -1,193 +1,86 @@
-<div class="container-fluid">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 text-right mb-2">
+            <button mat-raised-button color="primary" (click)="createPDF()">Baixar Laudo</button>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-12">
-            <div class="form-laudo">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Selecione o Chamado</mat-label>
-                            <mat-select  [(ngModel)]="laudo.chamadoId" name="chamadoId" [formControl]="chamadoId" [disabled]="disableChamadoSelect" [(value)]="laudo.chamadoId" (selectionChange)="selectChamado(laudo.chamadoId)" required>
-                                <mat-option *ngFor="let chamado of chamados"  value="{{ chamado.id }}" >
-                                {{chamado.nomePaciente}} - {{chamado.nomeClinica}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-6">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Abertura</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.dataAbertura" name="dataAbertura" matInput >
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Paciente</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.nomePaciente" name="nomePaciente" matInput >
-                        </mat-form-field>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Responsável do paciente</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.responsavelPaciente" name="responsavelPaciente" matInput >
-                        </mat-form-field>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Idade</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.idade" name="idade" matInput >
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Clinica</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.nomeClinica" name="nomeClinica" matInput >
-                        </mat-form-field>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Médico Requerente</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.medicoRequerente" name="medicoRequerente" matInput >
-                        </mat-form-field>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>CRMV</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.crmv" name="crmv" matInput >
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Gênero</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.sexo" name="sexo" matInput >
-                        </mat-form-field>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Raça</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.raca" name="raca" matInput >
-                        </mat-form-field>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Espécie</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.especie" name="especie" matInput >
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Data de Nascimento</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.dataNascimento" name="dataNascimento" matInput >
-                        </mat-form-field>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Data do Estudo</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.dataEstudo" name="dataEstudo" matInput >
-                        </mat-form-field>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Região do exame</mat-label>
-                            <input [disabled]="true" [(ngModel)]="chamado.regiaoExame" name="regiaoExame" matInput >
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Observações</mat-label>
-                            <textarea matInput [disabled]="true" [(ngModel)]="chamado.observacoes" name="observacoes"></textarea>
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row" *ngIf="chamado.imagens && chamado.imagens.length > 0">
-                    <div class="col-sm-12">
-                        <div>
-                            <h3>Imagens</h3> <br>
+            <div id="laudoTemplate" #laudoTemplate>
+                <div class="bar-header"></div>
+                <div class="container">
+                    <div class="row header-pdf">
+                        <div class="col-sm-3">
+                            <img src="../../../../assets/img/logo_login2.svg" alt="teste" class="img-logo" >
+                        </div>
+                        <div class="col-sm-4">
+                            <p>Nº LAUDO: <b>{{laudo.id}}</b></p>
+                            <p>NOME DO ANIMAL: <b>{{chamado.nomePaciente}}</b></p>
+                            <p>REGIÃO EXAME: <b>{{chamado.regiaoExame}}</b></p>
+                            <p>VETERINÁRIO SOLICITANTE: <b>{{chamado.medicoRequerente}}</b></p>
+                            <p>CLINICA: <b>{{chamado.nomeClinica}}</b></p>
+                            <p>DATA DO EXAME: <b>{{chamado.dataEstudo}}</b></p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p>IDADE: <b>{{chamado.idade}}</b></p>
+                            <p>RAÇA: <b>{{chamado.raca}}</b></p>
+                            <p>ESPECIE: <b>{{chamado.especie}}</b></p>
+                            <p>GÊNERO: <b>{{chamado.sexo}}</b></p>
+                            <p>RESPONSAVEL: <b>{{chamado.responsavelPaciente}}</b></p>
+                            <p class="pb-2">DATA DE NASCIMENTO: <b>{{chamado.dataNascimento}}</b></p>
                         </div>
                     </div>
-                    <div class="col-sm-3" *ngFor="let img of chamado.imagens">
-                        <mat-card class="card">
-                            <img mat-card-image src="{{img}}" alt="Foto do laudo">
-                            <mat-card-actions>
-                              <button mat-button (click)="ampliarImagem(img)">Ampliar</button>
-                            </mat-card-actions>
-                          </mat-card>
+                    
+                    <div class="divisor"></div>
+                    
+                    <div class="row ">
+                        <div class="col-sm-12">
+                            <div class="body-pdf">
+                                <h1>
+                                    Regiões
+                                </h1>
+                                <p>
+                                    {{ chamado.regiaoExame }}
+                                </p>
+
+                                <h1>
+                                    Projeções
+                                </h1>
+                                <p>
+                                    {{laudo.projecoes}}
+                                </p>
+
+                                <h1>
+                                    Achados radiográficos
+                                </h1>
+                                <p>
+                                    {{laudo.achadosRadiograficos}}
+                                </p>
+
+                                <h1>
+                                    Impressões diagnósticas. 
+                                </h1>
+                                <p>
+                                    {{laudo.impressoesDiagnosticas}}
+                                </p>
+                                
+                            </div>
+                        </div>
                     </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-12">
-            <h1 class="full-width">
-                Preencher Laudo
-            </h1>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="form-laudo">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <form class="form">
-                            <mat-form-field class="full-width descricao" appearance="outline">
-                                <mat-label>Projeções</mat-label>
-                                <textarea [(ngModel)]="laudo.projecoes" name="projecoes" matInput [disabled]="true"></textarea>
-                            </mat-form-field>
-                        </form>
+                    <div class="page-break"></div>
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div *ngFor="let urlImage of base64Images">
+                                <div class="img-container">
+                                    
+                                    <img class="s3-img" [src]="urlImage" alt="">
+                                </div>
+                                <div class="page-break"></div>
+                            </div>  
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <form class="form">
-                            <mat-form-field class="full-width descricao" appearance="outline">
-                                <mat-label>Achados Radiográficos</mat-label>
-                                <textarea [(ngModel)]="laudo.achadosRadiograficos" matInput name="achadosRadiograficos" [disabled]="true"></textarea>
-                            </mat-form-field>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <form class="form">
-                            <mat-form-field class="full-width descricao" appearance="outline">
-                                <mat-label>Impressões Diagnósticasa</mat-label>
-                                <textarea [(ngModel)]="laudo.impressoesDiagnosticas" matInput name="impressoesDiagnosticas" [disabled]="true"></textarea>
-                            </mat-form-field>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12 text-right">
-                        <button routerLink="../../" mat-raised-button color="warn">Voltar</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
