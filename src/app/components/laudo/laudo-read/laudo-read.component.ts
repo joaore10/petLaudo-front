@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Chamado } from 'src/app/models/chamado';
 import { Laudo } from 'src/app/models/laudo';
 import { ChamadoService } from 'src/app/services/chamado.service';
